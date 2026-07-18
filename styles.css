@@ -1475,9 +1475,51 @@ body.theme-sakura .carousel-click-indicator {
 }
 
 /* ==========================================================================
-   7. Responsive Design (Mobile / Tablet adapters)
+   7. Responsive Design (Mobile / Tablet / Laptop adapters)
    ========================================================================== */
-@media (max-width: 1024px) {
+
+/* Intermediate Sized Laptops (1151px to 1366px) */
+@media (min-width: 1151px) and (max-width: 1366px) {
+    :root {
+        --sidebar-width: 250px;
+    }
+    .app-sidebar {
+        padding: 40px 20px;
+    }
+    .editorial-hero, 
+    .editorial-about, 
+    .editorial-skills, 
+    .editorial-projects, 
+    .editorial-patents, 
+    .editorial-languages,
+    .editorial-certificates, 
+    .editorial-contact {
+        padding: 50px 4vw;
+    }
+    .about-main-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        justify-items: center;
+    }
+    .about-avatar-wrapper {
+        margin: 0 auto;
+    }
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .patents-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .languages-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+}
+
+/* Small Laptops / Tablets in Landscape (max-width: 1150px) */
+@media (max-width: 1150px) {
     html {
         font-size: 16px;
     }
@@ -1594,12 +1636,25 @@ body.theme-sakura .carousel-click-indicator {
     }
 
     .editorial-about {
-        grid-template-columns: 1fr;
-        gap: 40px;
         padding: 60px 6vw;
+        gap: 40px;
+    }
+    
+    .about-main-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        justify-items: center;
+    }
+    .about-narrative {
+        width: 100%;
     }
     .about-avatar-wrapper {
         margin: 0 auto;
+    }
+    
+    .education-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .editorial-skills, 
@@ -1629,10 +1684,16 @@ body.theme-sakura .carousel-click-indicator {
 
     .patents-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
     .patent-cert-thumbnail {
         width: 100%;
         max-width: 160px;
+    }
+    
+    .languages-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .contact-grid {
@@ -1645,5 +1706,41 @@ body.theme-sakura .carousel-click-indicator {
     }
     .lightbox-arrow {
         display: none !important;
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+    .hero-title {
+        font-size: 2.3rem;
+    }
+    .about-title, 
+    .skills-title, 
+    .projects-title, 
+    .patents-title, 
+    .cert-title, 
+    .languages-title, 
+    .contact-title {
+        font-size: 1.9rem;
+    }
+    .minimal-input-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .lang-cert-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+        gap: 15px;
+    }
+    .lang-cert-info {
+        text-align: center;
+    }
+    .big-contact-link .link-text {
+        font-size: 1.45rem;
     }
 }
