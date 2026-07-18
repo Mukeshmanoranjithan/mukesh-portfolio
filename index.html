@@ -19,9 +19,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="theme-monochrome">
-    <!-- Ambient Spotlight following cursor -->
+    <!-- Ambient Spotlight and Grid overlays -->
     <div class="bg-spotlight"></div>
     <div class="bg-grid"></div>
+    
+    <!-- Sakura Blossom Canvas (active only in Japanese theme) -->
+    <canvas id="sakura-canvas"></canvas>
 
     <div class="app-layout">
         <!-- Sticky Sidebar Navigation (Desktop) -->
@@ -39,8 +42,9 @@
                 <a href="#skills" class="nav-link" data-translate="navSkills"><span>03 /</span> Skills</a>
                 <a href="#projects" class="nav-link" data-translate="navProjects"><span>04 /</span> Projects</a>
                 <a href="#patents" class="nav-link" data-translate="navPatents"><span>05 /</span> Patents</a>
-                <a href="#certificates" class="nav-link" data-translate="navCertificates"><span>06 /</span> Certifications</a>
-                <a href="#contact" class="nav-link" data-translate="navContact"><span>07 /</span> Contact</a>
+                <a href="#languages" class="nav-link" data-translate="navLanguages"><span>06 /</span> Languages</a>
+                <a href="#certificates" class="nav-link" data-translate="navCertificates"><span>07 /</span> Certifications</a>
+                <a href="#contact" class="nav-link" data-translate="navContact"><span>08 /</span> Contact</a>
             </nav>
             
             <div class="sidebar-footer">
@@ -83,6 +87,7 @@
             <a href="#skills" class="mobile-link" data-translate="navSkills">Skills</a>
             <a href="#projects" class="mobile-link" data-translate="navProjects">Projects</a>
             <a href="#patents" class="mobile-link" data-translate="navPatents">Patents</a>
+            <a href="#languages" class="mobile-link" data-translate="navLanguages">Languages</a>
             <a href="#certificates" class="mobile-link" data-translate="navCertificates">Certifications</a>
             <a href="#contact" class="mobile-link" data-translate="navContact">Contact</a>
         </div>
@@ -106,51 +111,55 @@
 
             <!-- About / Narrative Section -->
             <section id="about" class="editorial-about">
-                <!-- Profile Image Portrait Card (Left) -->
-                <div class="about-avatar-wrapper reveal reveal-left">
-                    <img src="images/mukesh.png" class="profile-avatar-img" alt="Mukesh Manoranjithan">
-                </div>
-                
-                <div class="about-narrative reveal reveal-left">
-                    <h2 class="editorial-section-label">01 / Profile</h2>
-                    <h3 class="about-title" data-translate="aboutTitle">About Me</h3>
-                    <p class="about-text" data-translate="aboutText">
-                        I engineer backend services and machine learning systems that turn complex data streams into structured, actionable insights. With a focus on performance, security, and data integrity, I design systems that leverage predictive algorithms, secure redaction pipelines, and real-time sensor fusion. JLPT N3 certified, enabling seamless translation of complex technical requirements between English and Japanese development teams.
-                    </p>
+                <div class="about-main-grid">
+                    <!-- Profile Image Portrait Card (Left) -->
+                    <div class="about-avatar-wrapper reveal reveal-left">
+                        <img src="images/mukesh.png" class="profile-avatar-img" alt="Mukesh Manoranjithan">
+                    </div>
                     
-                    <div class="quick-telemetry">
-                        <div class="telemetry-item">
-                            <span class="telemetry-label">Status</span>
-                            <span class="telemetry-value">Undergraduate AI & DS</span>
-                        </div>
-                        <div class="telemetry-item">
-                            <span class="telemetry-label">Location</span>
-                            <span class="telemetry-value">Tamil Nadu, India</span>
-                        </div>
-                        <div class="telemetry-item">
-                            <span class="telemetry-label">Scope</span>
-                            <span class="telemetry-value">Backend, ML Pipelines, IoT</span>
+                    <div class="about-narrative reveal reveal-left">
+                        <h2 class="editorial-section-label">01 / Profile</h2>
+                        <h3 class="about-title" data-translate="aboutTitle">About Me</h3>
+                        <p class="about-text" data-translate="aboutText">
+                            I engineer backend services and machine learning systems that turn complex data streams into structured, actionable insights. With a focus on performance, security, and data integrity, I design systems that leverage predictive algorithms, secure redaction pipelines, and real-time sensor fusion. JLPT N3 certified, enabling seamless translation of complex technical requirements between English and Japanese development teams.
+                        </p>
+                        
+                        <div class="quick-telemetry">
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Status</span>
+                                <span class="telemetry-value">Undergrad AI & DS</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Location</span>
+                                <span class="telemetry-value">Tamil Nadu, India</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Scope</span>
+                                <span class="telemetry-value">Backend & ML Pipelines</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-education reveal reveal-right">
                     <h2 class="editorial-section-label" data-translate="eduTitle">Education</h2>
-                    <div class="education-card">
-                        <div class="edu-header">
-                            <span class="edu-date" data-translate="eduCollegeYear">2023 — 2027</span>
-                            <h4 class="edu-college" data-translate="eduCollege">M. Kumarasamy College of Engineering</h4>
+                    <div class="education-grid">
+                        <div class="education-card">
+                            <div class="edu-header">
+                                <span class="edu-date" data-translate="eduCollegeYear">2023 — 2027</span>
+                                <h4 class="edu-college" data-translate="eduCollege">M. Kumarasamy College of Engineering</h4>
+                            </div>
+                            <p class="edu-sub" data-translate="eduCollegeSub">B.Tech in Artificial Intelligence and Data Science</p>
                         </div>
-                        <p class="edu-sub" data-translate="eduCollegeSub">B.Tech in Artificial Intelligence and Data Science</p>
-                    </div>
 
-                    <div class="education-card">
-                        <div class="edu-header">
-                            <span class="edu-date">2021 — 2023</span>
-                            <h4 class="edu-college" data-translate="eduSchool">Kongu Higher Secondary School</h4>
+                        <div class="education-card">
+                            <div class="edu-header">
+                                <span class="edu-date">2021 — 2023</span>
+                                <h4 class="edu-college" data-translate="eduSchool">Kongu Higher Secondary School</h4>
+                            </div>
+                            <p class="edu-sub" data-translate="eduSchoolSub">Higher Secondary Course</p>
+                            <span class="edu-grade" data-translate="eduSchoolGrade">Grade: 89%</span>
                         </div>
-                        <p class="edu-sub" data-translate="eduSchoolSub">Higher Secondary Course</p>
-                        <span class="edu-grade" data-translate="eduSchoolGrade">Grade: 89%</span>
                     </div>
                 </div>
             </section>
@@ -348,7 +357,76 @@
                 </div>
             </section>
 
-            <!-- Certifications Section (Carousel) -->
+            <!-- Languages & Localization Section -->
+            <section id="languages" class="editorial-languages">
+                <div class="languages-grid">
+                    <div class="languages-info reveal reveal-left">
+                        <h2 class="editorial-section-label">05 / Languages</h2>
+                        <h3 class="languages-title" data-translate="langSectionTitle">Language & Localization</h3>
+                        <p class="languages-desc" data-translate="langSectionDesc">
+                            Bilingual capability plays a pivotal role in bridging engineering expectations between Japanese development environments and global teams. Holding a Japanese Language Proficiency Test (JLPT) N3 competency allows me to interpret technical requirements, localized documentation, and collaborate on system architecture specifications across cultures.
+                        </p>
+                        
+                        <div class="language-stats">
+                            <div class="lang-stat-item">
+                                <div class="lang-stat-name">Japanese (日本語)</div>
+                                <div class="lang-stat-level">JLPT N3 — Conversational / Technical</div>
+                            </div>
+                            <div class="lang-stat-item">
+                                <div class="lang-stat-name">English</div>
+                                <div class="lang-stat-level">Professional / Technical Writeup</div>
+                            </div>
+                            <div class="lang-stat-item">
+                                <div class="lang-stat-name">German (Deutsch)</div>
+                                <div class="lang-stat-level" data-translate="langGermanSub">Basic Competency (A1.1 Certified)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="languages-certs reveal reveal-right">
+                        <h4 class="languages-certs-label" data-translate="langCertsTitle">Language Credentials</h4>
+                        <div class="languages-certs-grid">
+                            <!-- N4 Cert -->
+                            <div class="lang-cert-card" onclick="window.openLightboxByFile('certificates/converted/japanese-N4.jpeg', 'Japanese Language Proficiency Test N4', 'JEES / Japan Foundation')">
+                                <div class="lang-cert-thumb">
+                                    <img src="certificates/converted/japanese-N4.jpeg" alt="JLPT N4 Certificate">
+                                    <div class="thumb-overlay"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="lang-cert-info">
+                                    <h5>JLPT N4 Certificate</h5>
+                                    <span>JEES / Japan Foundation</span>
+                                </div>
+                            </div>
+                            
+                            <!-- N5 Cert -->
+                            <div class="lang-cert-card" onclick="window.openLightboxByFile('certificates/converted/japanese_N5.png', 'Japanese Language Proficiency Test N5', 'JEES / Japan Foundation')">
+                                <div class="lang-cert-thumb">
+                                    <img src="certificates/converted/japanese_N5.png" alt="JLPT N5 Certificate">
+                                    <div class="thumb-overlay"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="lang-cert-info">
+                                    <h5>JLPT N5 Certificate</h5>
+                                    <span>JEES / Japan Foundation</span>
+                                </div>
+                            </div>
+
+                            <!-- German Cert -->
+                            <div class="lang-cert-card" onclick="window.openLightboxByFile('certificates/converted/german-lang-cert.png', 'German Language A1.1 Certificate', 'Language Competence Certificate')">
+                                <div class="lang-cert-thumb">
+                                    <img src="certificates/converted/german-lang-cert.png" alt="German A1.1 Certificate">
+                                    <div class="thumb-overlay"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                                <div class="lang-cert-info">
+                                    <h5 data-translate="langGermanCertTitle">German A1.1 Certificate</h5>
+                                    <span>Language Competence Certificate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
             <section id="certificates" class="editorial-certificates">
                 <div class="cert-header reveal reveal-left">
                     <h2 class="editorial-section-label">05 / Accreditations</h2>
@@ -356,7 +434,6 @@
                     <p class="cert-subtitle" data-translate="certSub">Verified professional accomplishments and educational milestones</p>
                 </div>
                 
-                <!-- Bleeding Wide Carousel Wrapper (extends offscreen right) -->
                 <div class="carousel-outer-wrapper reveal reveal-left">
                     <div class="carousel-wrapper-inner">
                         <button class="carousel-control prev" id="carousel-prev" aria-label="Previous Certificate">
@@ -387,7 +464,6 @@
                 </div>
                 
                 <div class="contact-grid">
-                    <!-- Left: Large Links -->
                     <div class="contact-channels reveal reveal-left">
                         <a href="mailto:manoranjithanmukesh@gmail.com" class="big-contact-link">
                             <span class="link-label">Send Email</span>
@@ -406,13 +482,9 @@
                             <a href="https://www.linkedin.com/in/mukesh-manoranjithan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                                 <i class="fa-brands fa-linkedin-in"></i> LinkedIn
                             </a>
-                            <a href="https://mukesh2006-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Alternative Portfolio Website">
-                                <i class="fa-solid fa-globe"></i> Netlify
-                            </a>
                         </div>
                     </div>
 
-                    <!-- Right: Outline Form -->
                     <form class="contact-form-minimal reveal reveal-right" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent! (Note: This is a frontend demo)');">
                         <div class="minimal-input-row">
                             <div class="minimal-group">

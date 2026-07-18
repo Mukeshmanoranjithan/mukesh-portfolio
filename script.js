@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
             navSkills: "Skills",
             navProjects: "Projects",
             navPatents: "Patents",
+            navLanguages: "Languages",
             navCertificates: "Certifications",
             navContact: "Contact",
-            heroSub: "Software Engineer",
+            heroSub: "Software Engineer &nbsp;&bull;&nbsp; JLPT N3 Certified",
             heroTitle: "Mukesh Manoranjithan",
             heroIntro: "Software Engineer and AI & Data Science undergraduate with expertise in Python, Java, SQL, PHP, and backend development. Experienced in building full-stack applications, machine learning solutions, and IoT systems.",
             heroContactBtn: "Get In Touch",
@@ -57,6 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
             patentAttachment: "Patent Grant Certificate",
             certTitle: "Certifications",
             certSub: "Verified professional accomplishments and educational milestones",
+            langSectionTitle: "Language & Localization",
+            langSectionDesc: "Bilingual capability plays a pivotal role in bridging engineering expectations between Japanese development environments and global teams. Holding a Japanese Language Proficiency Test (JLPT) N3 competency allows me to interpret technical requirements, localized documentation, and collaborate on system architecture specifications across cultures.",
+            langCertsTitle: "Language Credentials",
+            langGermanSub: "Basic Competency (A1.1 Certified)",
+            langGermanCertTitle: "German A1.1 Certificate",
             contactTitle: "Get In Touch",
             contactSub: "Feel free to reach out for collaborations, job opportunities, or inquiries.",
             contactBtn: "Send Message",
@@ -68,9 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             navSkills: "スキル",
             navProjects: "実績",
             navPatents: "公開特許",
+            navLanguages: "言語能力",
             navCertificates: "認定資格",
             navContact: "お問い合わせ",
-            heroSub: "ソフトウェアエンジニア",
+            heroSub: "ソフトウェアエンジニア &nbsp;&bull;&nbsp; 日本語能力試験N3合格",
             heroTitle: "ムケシュ・マノランジザン",
             heroIntro: "Python、Java、SQL、PHP、およびバックエンド開発を専門とするソフトウェアエンジニアであり、AI・データサイエンス分野の学部生。フルスタックアプリ、機械学習ソリューション、およびIoTシステムの開発経験があります。",
             heroContactBtn: "お問い合わせ",
@@ -112,6 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
             patentAttachment: "特許付与証明書",
             certTitle: "認定資格",
             certSub: "これまでに取得した専門的な技術認定と教育的成果",
+            langSectionTitle: "言語能力とローカライズ",
+            langSectionDesc: "バイリンガル能力は、日本語のシステム開発現場と海外開発チーム間の認識や仕様書の橋渡しをする上で極めて重要な役割を果たします。日本語能力試験（JLPT）N3レベルを保有しており、技術仕様やローカライズされた設計書の解釈、異文化間の要件定義調整が円滑に実行できます。",
+            langCertsTitle: "語学資格証明",
+            langGermanSub: "基礎レベル（A1.1 合格）",
+            langGermanCertTitle: "ドイツ語 A1.1 認定書",
             contactTitle: "お問い合わせ",
             contactSub: "コラボレーション、お仕事のご依頼、その他ご質問などお気軽にご連絡ください。",
             contactBtn: "メッセージ送信",
@@ -167,21 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
             file: "certificates/converted/The Joy of Computing using Python.png",
             en: { name: "The Joy of Computing using Python", issuer: "NPTEL Certification" },
             ja: { name: "Pythonによるコンピューティングの楽しさ", issuer: "NPTEL認定" }
-        },
-        {
-            file: "certificates/converted/japanese-N4.jpeg",
-            en: { name: "Japanese Language Proficiency Test (JLPT N4)", issuer: "JEES / Japan Foundation" },
-            ja: { name: "日本語能力試験 (JLPT N4)", issuer: "日本国際教育支援協会 / 国際交流基金" }
-        },
-        {
-            file: "certificates/converted/japanese_N5.png",
-            en: { name: "Japanese Language Proficiency Test (JLPT N5)", issuer: "JEES / Japan Foundation" },
-            ja: { name: "日本語能力試験 (JLPT N5)", issuer: "日本国際教育支援協会 / 国際交流基金" }
-        },
-        {
-            file: "certificates/converted/german-lang-cert.png",
-            en: { name: "German Language Certification", issuer: "Language Competence Certificate" },
-            ja: { name: "ドイツ語語学認定書", issuer: "語学能力判定書" }
         }
     ];
 
@@ -200,9 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lang === 'ja') {
             body.classList.remove('theme-monochrome');
             body.classList.add('theme-sakura');
+            startSakuraAnimation();
         } else {
             body.classList.remove('theme-sakura');
             body.classList.add('theme-monochrome');
+            stopSakuraAnimation();
         }
 
         // Apply translations with a smooth fade effect
@@ -229,24 +228,116 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Toggle event listener
-    themeToggleBtn.addEventListener('click', () => {
-        const targetLang = currentLang === 'en' ? 'ja' : 'en';
-        setLanguageAndTheme(targetLang);
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const targetLang = currentLang === 'en' ? 'ja' : 'en';
+            setLanguageAndTheme(targetLang);
+        });
+    }
+
+    // ==========================================================================
+    // 4. Sakura Blossom Particle Engine (Canvas-based)
+    // ==========================================================================
+    const canvas = document.getElementById('sakura-canvas');
+    let ctx = null;
+    let petals = [];
+    let animationFrameId = null;
+
+    if (canvas) {
+        ctx = canvas.getContext('2d');
+    }
+
+    function initSakura() {
+        if (!canvas || !ctx) return;
+        resizeCanvas();
+        petals = [];
+        const petalCount = Math.min(25, Math.floor(window.innerWidth / 50));
+        for (let i = 0; i < petalCount; i++) {
+            petals.push(createPetal());
+        }
+    }
+
+    function resizeCanvas() {
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    }
+
+    function createPetal() {
+        return {
+            x: Math.random() * (canvas ? canvas.width : window.innerWidth),
+            y: Math.random() * -(canvas ? canvas.height : window.innerHeight) - 20,
+            r: Math.random() * 5 + 3,
+            speedX: Math.random() * 1.0 - 0.2,
+            speedY: Math.random() * 0.8 + 0.4,
+            angle: Math.random() * 360,
+            spin: Math.random() * 0.8 - 0.4
+        };
+    }
+
+    function drawPetals() {
+        if (!ctx || !canvas) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        petals.forEach(p => {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.angle * Math.PI / 180);
+            
+            // Draw a subtle petal outline shape
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.r, p.r * 0.65, 0, 0, Math.PI * 2);
+            // Draw transparent terracotta/peach petal color
+            ctx.fillStyle = 'rgba(255, 127, 80, 0.15)'; 
+            ctx.fill();
+            ctx.restore();
+            
+            // Update positions
+            p.x += p.speedX + Math.sin(p.angle / 40) * 0.15;
+            p.y += p.speedY;
+            p.angle += p.spin;
+            
+            // Wrap dimensions
+            if (p.y > canvas.height + 20) {
+                p.y = -20;
+                p.x = Math.random() * canvas.width;
+            }
+            if (p.x > canvas.width + 20) {
+                p.x = -20;
+            } else if (p.x < -20) {
+                p.x = canvas.width + 20;
+            }
+        });
+        
+        animationFrameId = requestAnimationFrame(drawPetals);
+    }
+
+    function startSakuraAnimation() {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        initSakura();
+        drawPetals();
+    }
+
+    function stopSakuraAnimation() {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        if (ctx && canvas) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    window.addEventListener('resize', () => {
+        if (currentLang === 'ja') {
+            resizeCanvas();
+        }
     });
 
-    // Initialization call moved to the bottom of the script to prevent temporal dead zone ReferenceErrors
-
-
-    // Section 4 removed to replace flashy sakura canvas with professional clean design.
-
-
-    // Mouse Move Parallax removed per user request.
-
-
     // ==========================================================================
-    // 6. Scroll Parallax & Nav Active Link Switcher
+    // 5. Scroll Active Link Highlighting Navigation
     // ==========================================================================
-    const scrollWatermark = document.querySelector('.hero-bg-text');
     const navLinks = document.querySelectorAll('.nav-link');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const sections = document.querySelectorAll('section');
@@ -254,16 +345,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         
-        // 1. Shift hero watermark downward as we scroll
-        if (scrollWatermark) {
-            const speed = parseFloat(scrollWatermark.getAttribute('data-speed')) || 0.5;
-            scrollWatermark.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
-        }
-
-        // 2. Navigation Link Highlighting on Scroll
         let currentSectionId = '';
         sections.forEach(section => {
-            const top = section.offsetTop - 120;
+            const top = section.offsetTop - 150;
             const height = section.offsetHeight;
             if (scrolled >= top && scrolled < top + height) {
                 currentSectionId = section.getAttribute('id');
@@ -288,9 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // ==========================================================================
-    // 7. Scroll Reveal Observer
+    // 6. Scroll Reveal Observer
     // ==========================================================================
     const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -301,15 +384,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px"
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-
     // ==========================================================================
-    // 8. Mobile Menu Toggle
+    // 7. Mobile Navigation Drawer Toggle
     // ==========================================================================
     const mobileToggle = document.getElementById('mobile-toggle');
     const mobileNav = document.getElementById('mobile-nav');
@@ -329,9 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // ==========================================================================
-    // 9. Premium Drag-Snapping Carousel
+    // 8. Snapping Slider Carousel
     // ==========================================================================
     const track = document.getElementById('carousel-track');
     const nextBtn = document.getElementById('carousel-next');
@@ -345,18 +426,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let isDragging = false;
     let animationID = 0;
     
-    // Dynamic cards rendering
     function renderCarouselItems() {
         if (!track) return;
         track.innerHTML = '';
         
-        certificateData.forEach((cert, idx) => {
+        // Duplicate the data to ensure seamless infinite looping scroll
+        const doubleData = [...certificateData, ...certificateData];
+        
+        doubleData.forEach((cert, idx) => {
+            const originalIdx = idx % certificateData.length;
             const name = cert[currentLang].name;
             const issuer = cert[currentLang].issuer;
-            const clickText = currentLang === 'en' ? 'Click to view' : 'クリックして表示';
+            const clickText = currentLang === 'en' ? 'Click to inspect' : 'クリックして表示';
             
             const itemHTML = `
-                <div class="carousel-item" data-index="${idx}">
+                <div class="carousel-item" data-index="${originalIdx}">
                     <img src="${cert.file}" alt="${name}" loading="lazy">
                     <div class="carousel-overlay">
                         <h4>${name}</h4>
@@ -370,146 +454,22 @@ document.addEventListener('DOMContentLoaded', () => {
             track.insertAdjacentHTML('beforeend', itemHTML);
         });
 
-        // Add modal trigger events to new elements
+        // Add modal trigger events to duplicated items
         document.querySelectorAll('.carousel-item').forEach(item => {
             item.addEventListener('click', (e) => {
-                // If dragged, avoid trigger modal
-                if (Math.abs(currentTranslate - prevTranslate) > 5) return;
                 const idx = parseInt(item.getAttribute('data-index'));
                 openLightbox(idx);
             });
         });
 
-        // Render indicators
-        renderIndicators();
-        
-        // Reset slide snaps to zero
-        snapToSlide(0);
+        // Activate CSS infinite scrolling animation
+        track.classList.add('marquee-active');
     }
 
-    function renderIndicators() {
-        if (!indicatorsContainer) return;
-        indicatorsContainer.innerHTML = '';
-        const slidesCount = getSlidesCount();
-        
-        for (let i = 0; i < slidesCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('indicator-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                snapToSlide(i);
-            });
-            indicatorsContainer.appendChild(dot);
-        }
-    }
-
-    function updateIndicators() {
-        const dots = document.querySelectorAll('.indicator-dot');
-        dots.forEach((dot, idx) => {
-            dot.classList.remove('active');
-            if (idx === activeIndex) dot.classList.add('active');
-        });
-    }
-
-    function getSlidesCount() {
-        const itemsPerView = getItemsPerView();
-        return Math.max(1, certificateData.length - itemsPerView + 1);
-    }
-
-    function getItemsPerView() {
-        if (window.innerWidth > 1024) return 3;
-        if (window.innerWidth > 768) return 2;
-        return 1;
-    }
-
-    function snapToSlide(index) {
-        const maxIndex = getSlidesCount() - 1;
-        activeIndex = Math.max(0, Math.min(index, maxIndex));
-        
-        const cardWidth = track.firstElementChild ? track.firstElementChild.getBoundingClientRect().width : 340;
-        const gap = parseFloat(window.getComputedStyle(track).gap) || 30;
-        
-        currentTranslate = -activeIndex * (cardWidth + gap);
-        prevTranslate = currentTranslate;
-        
-        track.style.transform = `translateX(${currentTranslate}px)`;
-        updateIndicators();
-        
-        // Control disable arrow classes
-        if (prevBtn) prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
-        if (nextBtn) nextBtn.style.opacity = activeIndex === maxIndex ? '0.3' : '1';
-    }
-
-    // Carousel buttons listeners
-    if (nextBtn && prevBtn) {
-        nextBtn.addEventListener('click', () => {
-            snapToSlide(activeIndex + 1);
-        });
-        prevBtn.addEventListener('click', () => {
-            snapToSlide(activeIndex - 1);
-        });
-    }
-
-    // Touch & Mouse Drag actions
-    if (track) {
-        track.addEventListener('mousedown', dragStart);
-        track.addEventListener('touchstart', dragStart);
-        track.addEventListener('mouseup', dragEnd);
-        track.addEventListener('touchend', dragEnd);
-        track.addEventListener('mousemove', dragMove);
-        track.addEventListener('touchmove', dragMove);
-        track.addEventListener('mouseleave', dragEnd);
-    }
-
-    function dragStart(e) {
-        isDragging = true;
-        startX = getPositionX(e);
-        track.style.transition = 'none'; // Disable animations during active drags
-        animationID = requestAnimationFrame(dragAnimation);
-    }
-
-    function dragMove(e) {
-        if (!isDragging) return;
-        const currentPosition = getPositionX(e);
-        const diff = currentPosition - startX;
-        currentTranslate = prevTranslate + diff;
-    }
-
-    function dragEnd() {
-        if (!isDragging) return;
-        isDragging = false;
-        cancelAnimationFrame(animationID);
-        track.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-        
-        const cardWidth = track.firstElementChild ? track.firstElementChild.getBoundingClientRect().width : 340;
-        const gap = parseFloat(window.getComputedStyle(track).gap) || 30;
-        const step = cardWidth + gap;
-        
-        // Calculate nearest index
-        const indexToSnap = Math.round(-currentTranslate / step);
-        snapToSlide(indexToSnap);
-    }
-
-    function getPositionX(e) {
-        return e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
-    }
-
-    function dragAnimation() {
-        if (isDragging) {
-            track.style.transform = `translateX(${currentTranslate}px)`;
-            requestAnimationFrame(dragAnimation);
-        }
-    }
-
-    window.addEventListener('resize', () => {
-        // Redraw indicator quantity and update translates appropriately
-        renderIndicators();
-        snapToSlide(activeIndex);
-    });
-
+    // Snapping Carousel variables and touch actions removed in favor of CSS infinite marquee ticker
 
     // ==========================================================================
-    // 10. Certificate Lightbox Modal Controller
+    // 9. Lightbox Modal Controller
     // ==========================================================================
     const modal = document.getElementById('lightbox-modal');
     const modalImage = document.getElementById('lightbox-image');
@@ -528,7 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.setAttribute('aria-hidden', 'false');
     }
 
-    // Direct standalone lightbox trigger for specific images (used by Patents cert link)
     window.openLightboxByFile = function(file, name, issuer) {
         modalImage.src = file;
         modalImage.alt = name;
@@ -554,7 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalCaption.textContent = `${cert[currentLang].name} — ${cert[currentLang].issuer}`;
         modalDownload.href = cert.file;
         
-        // Custom check to ensure button bounds
         modalPrev.style.display = currentCertificateIndex === 0 ? 'none' : 'flex';
         modalNext.style.display = currentCertificateIndex === certificateData.length - 1 ? 'none' : 'flex';
     }
@@ -562,12 +520,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalClose) {
         modalClose.addEventListener('click', closeLightbox);
         
-        // Clicking backdrop closes modal
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeLightbox();
         });
         
-        // Navigation arrows
         modalPrev.addEventListener('click', () => {
             if (currentCertificateIndex > 0) {
                 currentCertificateIndex--;
@@ -597,6 +553,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize on load (called at the bottom to ensure all variables, elements, and functions are fully initialized)
+    // Mouse Spotlight Position Tracker (For CSS spotlights)
+    window.addEventListener('mousemove', (e) => {
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        document.documentElement.style.setProperty('--mx', x);
+        document.documentElement.style.setProperty('--my', y);
+    });
+
+    // Initialize Language & Theme on startup
     setLanguageAndTheme(currentLang);
 });
