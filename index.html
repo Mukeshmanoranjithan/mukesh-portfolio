@@ -1,143 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mukesh Manoranjithan - Systems & Applied Machine Learning Engineer. Portfolio highlighting scalable backend systems, RAG pipelines, predictive models, and IoT telemetry.">
+    <meta name="author" content="Mukesh Manoranjithan">
+    <title>Mukesh Manoranjithan | Software Engineer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="page-shell">
-    <header class="topbar">
-      <a class="brand" href="#hero">My Portfolio</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#certificates">Certificates</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<body class="theme-monochrome">
+    <!-- Ambient Spotlight following cursor -->
+    <div class="bg-spotlight"></div>
+    <div class="bg-grid"></div>
 
-    <section id="hero" class="hero section section-large">
-      <div class="hero-copy">
-        <span class="eyebrow">Minimal analytics portfolio</span>
-        <h1>Crafting clear data stories with disciplined design.</h1>
-        <p>Professional, minimal, and modern portfolio web experience with subtle motion and a refined gray palette.</p>
-        <div class="hero-actions">
-          <a class="button" href="#certificates">View Certificates</a>
-          <a class="button button-muted" href="#contact">Talk</a>
+    <div class="app-layout">
+        <!-- Sticky Sidebar Navigation (Desktop) -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <div class="logo-circle">MM</div>
+                <h1 class="sidebar-logo">MUKESH</h1>
+                <p class="sidebar-title">Manoranjithan</p>
+                <p class="sidebar-tag" data-translate="heroSub">Systems & ML Engineer</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#home" class="nav-link active" data-translate="navHome"><span>01 /</span> Home</a>
+                <a href="#about" class="nav-link" data-translate="navAbout"><span>02 /</span> About</a>
+                <a href="#skills" class="nav-link" data-translate="navSkills"><span>03 /</span> Skills</a>
+                <a href="#projects" class="nav-link" data-translate="navProjects"><span>04 /</span> Projects</a>
+                <a href="#patents" class="nav-link" data-translate="navPatents"><span>05 /</span> Patents</a>
+                <a href="#certificates" class="nav-link" data-translate="navCertificates"><span>06 /</span> Certifications</a>
+                <a href="#contact" class="nav-link" data-translate="navContact"><span>07 /</span> Contact</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <!-- Theme / Language Switcher -->
+                <div class="lang-switch-wrapper">
+                    <span class="lang-label">EN</span>
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Language and Theme">
+                        <span class="toggle-slider"></span>
+                    </button>
+                    <span class="lang-label">JA</span>
+                </div>
+
+                <div class="sidebar-jlpt">
+                    <div class="jlpt-badge-container">
+                        <span class="jlpt-badge">JLPT N3</span>
+                        <span class="jlpt-pct">85%</span>
+                    </div>
+                    <div class="jlpt-bar"><div class="jlpt-progress"></div></div>
+                    <p class="jlpt-desc" data-translate="skillsLang">Bilingual Competence</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile Header Bar -->
+        <header class="mobile-header">
+            <div class="mobile-header-container">
+                <a href="#" class="mobile-logo">M.M</a>
+                <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Open Menu">
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Nav Menu Overlay -->
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="#home" class="mobile-link" data-translate="navHome">Home</a>
+            <a href="#about" class="mobile-link" data-translate="navAbout">About</a>
+            <a href="#skills" class="mobile-link" data-translate="navSkills">Skills</a>
+            <a href="#projects" class="mobile-link" data-translate="navProjects">Projects</a>
+            <a href="#patents" class="mobile-link" data-translate="navPatents">Patents</a>
+            <a href="#certificates" class="mobile-link" data-translate="navCertificates">Certifications</a>
+            <a href="#contact" class="mobile-link" data-translate="navContact">Contact</a>
         </div>
-      </div>
-      <div class="hero-visual">
-        <div class="parallax-layer layer-top"></div>
-        <div class="parallax-layer layer-mid"></div>
-        <div class="parallax-layer layer-bottom"></div>
-      </div>
-    </section>
 
-    <section id="about" class="section section-split">
-      <div class="panel panel-muted">
-        <h2>About Me</h2>
-        <p>I build polished analytical portfolios, dashboards, and technical communication with a restrained visual language.</p>
-      </div>
-      <div class="panel panel-card parallax-card">
-        <h3>Approach</h3>
-        <p>Clean layout, consistent spacing, and streamlined typography support insight first. Motion is subtle and purposeful.</p>
-      </div>
-    </section>
+        <!-- Main Content Area -->
+        <main class="app-content">
+            
+            <!-- Hero Section -->
+            <section id="home" class="editorial-hero">
+                <div class="hero-content">
+                    <p class="hero-subtitle text-reveal" data-translate="heroSub">Software Engineer</p>
+                    <h2 class="hero-title text-reveal" data-translate="heroTitle">Mukesh Manoranjithan</h2>
+                    <p class="hero-intro text-reveal" data-translate="heroIntro">Software Engineer and AI & Data Science undergraduate with expertise in Python, Java, SQL, PHP, and backend development. Experienced in building full-stack applications, machine learning solutions, and IoT systems.</p>
+                    
+                    <div class="hero-ctas text-reveal">
+                        <a href="#contact" class="btn btn-primary" data-translate="heroContactBtn">Get In Touch</a>
+                        <a href="#projects" class="btn btn-secondary" data-translate="navProjects">Explore Projects</a>
+                    </div>
+                </div>
+            </section>
 
-    <section id="work" class="section section-split reverse">
-      <div class="panel panel-card parallax-card">
-        <h3>Selected Work</h3>
-        <p>Data preparation, predictive modeling, and workflow automation with a focus on readability, traceability, and modern presentation.</p>
-      </div>
-      <div class="panel panel-muted">
-        <h2>Capabilities</h2>
-        <ul>
-          <li>Data analytics & feature engineering</li>
-          <li>Report design & storytelling</li>
-          <li>Interactive certificate showcase</li>
-        </ul>
-      </div>
-    </section>
+            <!-- About / Narrative Section -->
+            <section id="about" class="editorial-about">
+                <!-- Profile Image Portrait Card (Left) -->
+                <div class="about-avatar-wrapper reveal reveal-left">
+                    <img src="images/mukesh.png" class="profile-avatar-img" alt="Mukesh Manoranjithan">
+                </div>
+                
+                <div class="about-narrative reveal reveal-left">
+                    <h2 class="editorial-section-label">01 / Profile</h2>
+                    <h3 class="about-title" data-translate="aboutTitle">About Me</h3>
+                    <p class="about-text" data-translate="aboutText">
+                        I engineer backend services and machine learning systems that turn complex data streams into structured, actionable insights. With a focus on performance, security, and data integrity, I design systems that leverage predictive algorithms, secure redaction pipelines, and real-time sensor fusion. JLPT N3 certified, enabling seamless translation of complex technical requirements between English and Japanese development teams.
+                    </p>
+                    
+                    <div class="quick-telemetry">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Status</span>
+                            <span class="telemetry-value">Undergraduate AI & DS</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Location</span>
+                            <span class="telemetry-value">Tamil Nadu, India</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Scope</span>
+                            <span class="telemetry-value">Backend, ML Pipelines, IoT</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-education reveal reveal-right">
+                    <h2 class="editorial-section-label" data-translate="eduTitle">Education</h2>
+                    <div class="education-card">
+                        <div class="edu-header">
+                            <span class="edu-date" data-translate="eduCollegeYear">2023 — 2027</span>
+                            <h4 class="edu-college" data-translate="eduCollege">M. Kumarasamy College of Engineering</h4>
+                        </div>
+                        <p class="edu-sub" data-translate="eduCollegeSub">B.Tech in Artificial Intelligence and Data Science</p>
+                    </div>
 
-    <section id="certificates" class="section section-lg">
-      <div class="section-heading">
-        <span class="eyebrow">Credentials</span>
-        <h2>Certificates & Certification</h2>
-        <p>Explore certificates from analytics, data science, and software fundamentals.</p>
-      </div>
-      <div class="carousel-wrap">
-        <button class="carousel-button prev" aria-label="Previous">‹</button>
-        <div class="carousel" id="carousel">
-          <div class="carousel-track">
-            <article class="card">
-              <a href="certificates/Deep%20Learning%20Fundamentals.pdf" target="_blank" rel="noreferrer">
-                <span>Deep Learning Fundamentals</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Introduction%20to%20Cognitive%20Psychology.pdf" target="_blank" rel="noreferrer">
-                <span>Introduction to Cognitive Psychology</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Introduction%20To%20Industry%204.0%20And%20Industrial.pdf" target="_blank" rel="noreferrer">
-                <span>Industry 4.0 & Industrial</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/PATENT%20GRANT%20CERTIFICATE(HELMET).pdf" target="_blank" rel="noreferrer">
-                <span>Patent Grant Certificate</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Predictive%20Modeling%20Fundamentals%20I.pdf" target="_blank" rel="noreferrer">
-                <span>Predictive Modeling Fundamentals</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Python%20101%20for%20Data%20Science.pdf" target="_blank" rel="noreferrer">
-                <span>Python 101 for Data Science</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Scala%20101.pdf" target="_blank" rel="noreferrer">
-                <span>Scala 101</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/Spark%20Fundamentals%201.pdf" target="_blank" rel="noreferrer">
-                <span>Spark Fundamentals 1</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/SQL%20and%20Relational%20Databases%20101.pdf" target="_blank" rel="noreferrer">
-                <span>SQL & Relational Databases 101</span>
-              </a>
-            </article>
-            <article class="card">
-              <a href="certificates/The%20Joy%20of%20Computing%20using%20Python.pdf" target="_blank" rel="noreferrer">
-                <span>The Joy of Computing using Python</span>
-              </a>
-            </article>
-          </div>
+                    <div class="education-card">
+                        <div class="edu-header">
+                            <span class="edu-date">2021 — 2023</span>
+                            <h4 class="edu-college" data-translate="eduSchool">Kongu Higher Secondary School</h4>
+                        </div>
+                        <p class="edu-sub" data-translate="eduSchoolSub">Higher Secondary Course</p>
+                        <span class="edu-grade" data-translate="eduSchoolGrade">Grade: 89%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technical Skills Matrix Section -->
+            <section id="skills" class="editorial-skills">
+                <div class="skills-header reveal reveal-left">
+                    <h2 class="editorial-section-label">02 / Competence</h2>
+                    <h3 class="skills-title" data-translate="skillsTitle">Technical Expertise</h3>
+                </div>
+                
+                <div class="skills-matrix">
+                    <!-- Category 1 -->
+                    <div class="matrix-row reveal reveal-left">
+                        <div class="matrix-label" data-translate="skillsLang">Languages</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag">Python (Asyncio, Poetry)</span>
+                            <span class="matrix-tag">Java (Spring Boot)</span>
+                            <span class="matrix-tag">SQL (PostgreSQL, MySQL)</span>
+                            <span class="matrix-tag">C++ (Embedded)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Category 2 -->
+                    <div class="matrix-row reveal reveal-right">
+                        <div class="matrix-label" data-translate="skillsML">AI / ML / Data Science</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag">PyTorch</span>
+                            <span class="matrix-tag">Scikit-learn</span>
+                            <span class="matrix-tag">Pandas & NumPy</span>
+                            <span class="matrix-tag">Optuna (Hyperparameters)</span>
+                            <span class="matrix-tag">SHAP (Model Explainability)</span>
+                            <span class="matrix-tag">Power BI ETL</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 3 -->
+                    <div class="matrix-row reveal reveal-left">
+                        <div class="matrix-label" data-translate="skillsBackend">Backend / Database</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag">PHP MVC</span>
+                            <span class="matrix-tag">RESTful API Design</span>
+                            <span class="matrix-tag">MySQL Relational Algebra</span>
+                            <span class="matrix-tag">PostgreSQL CTEs & Indexing</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 4 -->
+                    <div class="matrix-row reveal reveal-right">
+                        <div class="matrix-label" data-translate="skillsTools">Developer Tools</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag">Git / GitHub CI-CD</span>
+                            <span class="matrix-tag">Docker Containerization</span>
+                            <span class="matrix-tag">Linux / Bash Scripting</span>
+                            <span class="matrix-tag">VS Code</span>
+                            <span class="matrix-tag">Jupyter Ecosystem</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 5 -->
+                    <div class="matrix-row reveal reveal-left">
+                        <div class="matrix-label" data-translate="skillsConcepts">Core Concepts</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag">Object-Oriented Programming (OOP)</span>
+                            <span class="matrix-tag">Data Structures & Algorithms (DSA)</span>
+                            <span class="matrix-tag">Database Management Systems (DBMS)</span>
+                            <span class="matrix-tag">Operating Systems (Memory & Threads)</span>
+                            <span class="matrix-tag">Software Engineering Principles</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Spoken Languages -->
+                    <div class="matrix-row reveal reveal-right">
+                        <div class="matrix-label" data-translate="skillsSpoken">Spoken Languages</div>
+                        <div class="matrix-tags">
+                            <span class="matrix-tag" data-translate="langEnglish">English (Professional)</span>
+                            <span class="matrix-tag" data-translate="langTamil">Tamil (Native)</span>
+                            <span class="matrix-tag" data-translate="langJapanese">Japanese (JLPT N3)</span>
+                            <span class="matrix-tag" data-translate="langGerman">German (Competence)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="editorial-projects">
+                <div class="projects-header reveal reveal-left">
+                    <h2 class="editorial-section-label">03 / Case Studies</h2>
+                    <h3 class="projects-title" data-translate="projectsTitle">Featured Projects</h3>
+                </div>
+                
+                <div class="projects-list">
+                    <!-- Project 1: Expense Tracker -->
+                    <div class="project-row reveal reveal-left">
+                        <div class="project-num">01</div>
+                        <div class="project-main">
+                            <div class="project-title-row">
+                                <h4 class="project-name" data-translate="projectExpenseTitle">Personal Expense Tracker</h4>
+                                <a href="https://github.com/Mukeshmanoranjithan/personal_expense_tracker" target="_blank" rel="noopener noreferrer" class="project-repo-link" data-translate="projectsViewGithub">View Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <p class="project-description" data-translate="projectExpenseDesc">Designed an MVC financial logging system utilizing secure session handlers, query optimizations, and normalizations (3NF) to track and analyze personal transaction telemetry. Features a dynamic PHP analytics engine.</p>
+                            <div class="project-tech-tags">
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>XAMPP</span>
+                                <span>JavaScript</span>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Tourism Explorer -->
+                    <div class="project-row reveal reveal-right">
+                        <div class="project-num">02</div>
+                        <div class="project-main">
+                            <div class="project-title-row">
+                                <h4 class="project-name" data-translate="projectTourismTitle">Insightful Indian Tourism Explorer</h4>
+                                <a href="https://github.com/Mukeshmanoranjithan/Insightful-Indian-Tourism-Explorer" target="_blank" rel="noopener noreferrer" class="project-repo-link" data-translate="projectsViewGithub">View Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <p class="project-description" data-translate="projectTourismDesc">Engineered an ETL pipeline parsing geographic tourism datasets, resolving anomalies using Python/Pandas. Modeled statistical demand patterns and compiled key regional performance indexes in Power BI.</p>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>SQL</span>
+                                <span>Pandas</span>
+                                <span>Power BI</span>
+                                <span>Excel Data Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Churn Prediction -->
+                    <div class="project-row reveal reveal-left">
+                        <div class="project-num">03</div>
+                        <div class="project-main">
+                            <div class="project-title-row">
+                                <h4 class="project-name" data-translate="projectChurnTitle">Customer Churn Prediction</h4>
+                                <a href="https://github.com/Mukeshmanoranjithan" target="_blank" rel="noopener noreferrer" class="project-repo-link" data-translate="projectsViewGithub">View Repository <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            </div>
+                            <p class="project-description" data-translate="projectChurnDesc">Constructed a binary classification engine comparing XGBoost, Random Forests, and SVMs. Integrated Optuna for hyperparameter optimization and deployed SHAP values for model explainability and feature importance analysis.</p>
+                            <div class="project-tech-tags">
+                                <span>Python</span>
+                                <span>Scikit-learn</span>
+                                <span>Optuna</span>
+                                <span>SHAP</span>
+                                <span>Pandas & NumPy</span>
+                                <span>Matplotlib</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patents Section -->
+            <section id="patents" class="editorial-patents">
+                <div class="patents-header reveal reveal-left">
+                    <h2 class="editorial-section-label">04 / Patents</h2>
+                    <h3 class="patents-title" data-translate="patentsTitle">Published Patents</h3>
+                </div>
+                
+                <div class="patents-grid">
+                    <!-- Patent 1 -->
+                    <div class="patent-item reveal reveal-left">
+                        <div class="patent-card-body">
+                            <div class="patent-info-content">
+                                <div class="patent-status">Published / 公開済</div>
+                                <h4 class="patent-name" data-translate="patentBlurDTitle">BlurD – AI-Based Document Redaction System</h4>
+                                <p class="patent-desc" data-translate="patentBlurDDesc">Co-invented an automated compliance pipeline detecting and redacting sensitive PII in scanned document structures. Integrates LayoutLMv3 for layout analysis, Named Entity Recognition (NER), custom OCR error-corrections, and RAG validation.</p>
+                                <div class="patent-tech-list">
+                                    <strong>Architecture:</strong> Python, RAG Orchestration, NLP Entity Extraction, OCR Pipelines, Document Structuring
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Patent 2 -->
+                    <div class="patent-item reveal reveal-right">
+                        <div class="patent-card-body">
+                            <div class="patent-info-content">
+                                <div class="patent-status">Published / 公開済</div>
+                                <h4 class="patent-name" data-translate="patentHelmetTitle">Smart Helmet for Rider Safety</h4>
+                                <p class="patent-desc" data-translate="patentHelmetDesc">Developed a real-time hardware-software telemetry module. Implemented Kalman filtering for sensor fusion on raw accelerometer data, ESP32 FreeRTOS multitasking, and automatic GPS/GSM emergency broadcast protocols.</p>
+                                <div class="patent-tech-list">
+                                    <strong>Architecture:</strong> IoT, ESP32 RTOS, Telemetry Sensors, GSM/GPS Broadcast, Kalman Filtering
+                                </div>
+                            </div>
+                            <div class="patent-attachment">
+                                <span class="attachment-label" data-translate="patentAttachment">Patent Grant Certificate</span>
+                                <div class="patent-cert-thumbnail" onclick="window.openLightboxByFile('certificates/converted/PATENT GRANT CERTIFICATE(HELMET).png', 'Smart Helmet for Rider Safety', 'Indian Patent Office')">
+                                    <img src="certificates/converted/PATENT GRANT CERTIFICATE(HELMET).png" alt="Smart Helmet Patent Grant Certificate">
+                                    <div class="thumb-overlay"><i class="fa-solid fa-expand"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Section (Carousel) -->
+            <section id="certificates" class="editorial-certificates">
+                <div class="cert-header reveal reveal-left">
+                    <h2 class="editorial-section-label">05 / Accreditations</h2>
+                    <h3 class="cert-title" data-translate="navCertificates">Certifications</h3>
+                    <p class="cert-subtitle" data-translate="certSub">Verified professional accomplishments and educational milestones</p>
+                </div>
+                
+                <!-- Bleeding Wide Carousel Wrapper (extends offscreen right) -->
+                <div class="carousel-outer-wrapper reveal reveal-left">
+                    <div class="carousel-wrapper-inner">
+                        <button class="carousel-control prev" id="carousel-prev" aria-label="Previous Certificate">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        
+                        <div class="carousel-container" id="carousel-container">
+                            <div class="carousel-track" id="carousel-track">
+                                <!-- Generated Dynamically -->
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-control next" id="carousel-next" aria-label="Next Certificate">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-indicators" id="carousel-indicators"></div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="editorial-contact">
+                <div class="contact-header reveal reveal-left">
+                    <h2 class="editorial-section-label">06 / Connect</h2>
+                    <h3 class="contact-title" data-translate="contactTitle">Get In Touch</h3>
+                    <p class="contact-subtitle" data-translate="contactSub">Feel free to reach out for collaborations, job opportunities, or inquiries.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Left: Large Links -->
+                    <div class="contact-channels reveal reveal-left">
+                        <a href="mailto:manoranjithanmukesh@gmail.com" class="big-contact-link">
+                            <span class="link-label">Send Email</span>
+                            <span class="link-text">manoranjithanmukesh@gmail.com</span>
+                        </a>
+
+                        <a href="tel:+919952473896" class="big-contact-link">
+                            <span class="link-label">Call Direct</span>
+                            <span class="link-text">+91 99524 73896</span>
+                        </a>
+
+                        <div class="contact-socials-row">
+                            <a href="https://github.com/Mukeshmanoranjithan" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                                <i class="fa-brands fa-github"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/mukesh-manoranjithan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                            </a>
+                            <a href="https://mukesh2006-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer" aria-label="Alternative Portfolio Website">
+                                <i class="fa-solid fa-globe"></i> Netlify
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Outline Form -->
+                    <form class="contact-form-minimal reveal reveal-right" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent! (Note: This is a frontend demo)');">
+                        <div class="minimal-input-row">
+                            <div class="minimal-group">
+                                <input type="text" id="form-name" required placeholder=" ">
+                                <label for="form-name">Name</label>
+                            </div>
+                            <div class="minimal-group">
+                                <input type="email" id="form-email" required placeholder=" ">
+                                <label for="form-email">Email</label>
+                            </div>
+                        </div>
+                        <div class="minimal-group">
+                            <textarea id="form-message" rows="4" required placeholder=" "></textarea>
+                            <label for="form-message">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-translate="contactBtn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-container">
+                    <p class="footer-copy" data-translate="footerText">&copy; 2026 Mukesh Manoranjithan. All rights reserved.</p>
+                    <a href="#" class="back-to-top" aria-label="Scroll to top">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <button class="lightbox-arrow prev" id="lightbox-prev" aria-label="Previous Certificate">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightbox-image" src="" alt="Certificate Image">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <a href="" id="lightbox-download" class="lightbox-download-btn" download><i class="fa-solid fa-download"></i> Download</a>
         </div>
-        <button class="carousel-button next" aria-label="Next">›</button>
-      </div>
-    </section>
+        <button class="lightbox-arrow next" id="lightbox-next" aria-label="Next Certificate">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
 
-    <section id="contact" class="section section-split">
-      <div class="panel panel-muted">
-        <h2>Contact</h2>
-        <p>Ready to collaborate on a polished analytics portfolio or dashboard experience?</p>
-      </div>
-      <div class="panel panel-card">
-        <h3>Get in touch</h3>
-        <p>Send a note at <a href="mailto:hello@example.com">hello@example.com</a> or update this email in the source.</p>
-      </div>
-    </section>
-  </div>
-  <script src="script.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
