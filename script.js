@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 3. Language & Theme Management
     // ==========================================================================
-    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
     let currentLang = localStorage.getItem('portfolio-lang') || 'en';
 
     function setLanguageAndTheme(lang) {
@@ -230,12 +230,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Toggle event listener
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
             const targetLang = currentLang === 'en' ? 'ja' : 'en';
             setLanguageAndTheme(targetLang);
         });
-    }
+    });
 
     // ==========================================================================
     // 4. Sakura Blossom Particle Engine (Canvas-based)
